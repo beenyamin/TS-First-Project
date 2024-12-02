@@ -30,32 +30,30 @@ const localGuardianValidationSchema = z.object({
 
 export const createStudentValidationSchema = z.object({
   body: z.object({
-      password : z.string().max(20),
-         student : z.object({
-          name: userNameValidationSchema,
-          gender: z.enum(['male', 'female', 'others'], {
-            errorMap: () => ({ message: 'Invalid gender value.' }),
-          }),
-          dateOfBirth: z.date().optional(),
-          email: z
-            .string()
-            .email('Invalid email format.')
-            .nonempty('Email is required.'),
-          contactNo: z.string().nonempty('Contact number is required.'),
-          emergencyContactNo: z
-            .string()
-            .nonempty('Emergency contact number is required.'),
-          bloodGroup: z
-            .enum(['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'])
-            .optional(),
-          presentAddress: z.string().nonempty('Present address is required.'),
-          permanentAddress: z.string().nonempty('Permanent address is required.'),
-          guardian: guardianValidationSchema,
-          localGuardian: localGuardianValidationSchema,
-          profileImg: z.string().optional(),
-         })
-     
+    password: z.string().max(20),
+    student: z.object({
+      name: userNameValidationSchema,
+      gender: z.enum(['male', 'female', 'others'], {
+        errorMap: () => ({ message: 'Invalid gender value.' }),
+      }),
+      dateOfBirth: z.string().optional(),
+      email: z
+        .string()
+        .email('Invalid email format.')
+        .nonempty('Email is required.'),
+      contactNo: z.string().nonempty('Contact number is required.'),
+      emergencyContactNo: z
+        .string()
+        .nonempty('Emergency contact number is required.'),
+      bloodGroup: z
+        .enum(['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'])
+        .optional(),
+      presentAddress: z.string().nonempty('Present address is required.'),
+      permanentAddress: z.string().nonempty('Permanent address is required.'),
+      guardian: guardianValidationSchema,
+      localGuardian: localGuardianValidationSchema,
+      admissionSemester: z.string(),
+      profileImg: z.string().optional(),
+    }),
   }),
 });
-
- 
