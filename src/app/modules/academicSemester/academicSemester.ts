@@ -1,4 +1,4 @@
-
+//interface
 
 export type TMonths =
 | "January"
